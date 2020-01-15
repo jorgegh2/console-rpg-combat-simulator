@@ -2,10 +2,12 @@
 #include <iostream>
 #include "Combat.h"
 #include "main.h"
+#include <time.h>
 
 void main()
 {
 	ModuleCombat* combat_system = new ModuleCombat();
+	srand(time(NULL));
 
 	while (combat_system->in_game)
 	{

@@ -5,17 +5,20 @@
 class Character
 {
 public:
-	Character(int hp, int attack, int defense, int speed, ModuleCombat* combat);
+	Character(int lvl, int hp, int attack, int defense, int speed, ModuleCombat* combat);
 	void Attack(Character* rival);
 	void Death();
 	void Heal();
 
 public:
 	ModuleCombat* combat = nullptr;
+	bool first = false;
+	int lvl = 0;
 	int hp = 0;
 	int attack = 0;
 	int defense = 0;
 	int speed = 0;
+	int dice = 0;
 
 };
 

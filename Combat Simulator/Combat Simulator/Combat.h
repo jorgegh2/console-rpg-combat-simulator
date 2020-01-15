@@ -10,7 +10,9 @@ public:
 	void StartCombat();
 	void PrintStats();
 	void InCombat();
-	void CleanAndPrintStats();
+	void EnemyTurn();
+	void PlayerTurn();
+	void RewriteInCombat();
 	void EndCombat();
 
 public:
