@@ -13,7 +13,9 @@ public:
 public:
 	ModuleCombat* combat = nullptr;
 	bool first = false;
+	int uses_health = 0;
 	int lvl = 0;
+	int maxhp = 0;
 	int hp = 0;
 	int attack = 0;
 	int defense = 0;

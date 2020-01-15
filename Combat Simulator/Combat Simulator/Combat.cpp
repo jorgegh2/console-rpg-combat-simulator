@@ -41,6 +41,7 @@ void ModuleCombat::InCombat()
 		character2->first = false;
 		printf("\nYou go first, player!");
 		PlayerTurn();
+		system("pause");
 		EnemyTurn();
 	}
 	else
@@ -59,7 +60,7 @@ void ModuleCombat::EnemyTurn()
 {
 	if (character2->hp > 0)
 	{
-		int enemy_action = rand() % 1;
+		int enemy_action = rand() % 3;//TODO 3 debe de ser.
 
 		switch (enemy_action)
 		{
@@ -84,20 +85,28 @@ void ModuleCombat::PlayerTurn()
 	if (character1->hp > 0)
 	{
 		int action = 0;
-
-		printf("\n\n\nActions:");
-		printf("\n    1. Attack.\n    2. Heal.\n\nSelect your action: ");
-		scanf_s("%i", &action);
-
-		RewriteInCombat();
-		if (action == 1)
+		bool action_valid = false;
+		while (!action_valid)
 		{
-			character1->Attack(character2);
+			printf("\n\n\nActions:");
+			printf("\n    1. Attack.\n    2. Heal(%i).\n\nSelect your action: ", character1->uses_health);
+			scanf_s("%i", &action);
+		
+			RewriteInCombat();
+			if (action == 1)
+			{
+				character1->Attack(character2);
+				action_valid = true;
+			}
+			else if (action == 2 && character1->uses_health > 0)
+			{
+				character1->Heal();
+				action_valid = true;
+			}
+			else
+				printf("\nThis Action is not valid!");
 		}
-		else if (action == 2)
-		{
-			character1->Heal();
-		}
+
 	}
 }
 

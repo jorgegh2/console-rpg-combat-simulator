@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <iostream>
 
-Character::Character(int lvl, int hp, int attack, int defense, int speed, ModuleCombat* combat) : lvl(lvl), hp(hp), attack(attack), defense(defense), speed(speed), combat(combat) {}
+Character::Character(int lvl, int hp, int attack, int defense, int speed, ModuleCombat* combat) : lvl(lvl), hp(hp), maxhp(hp), attack(attack), defense(defense), speed(speed), combat(combat) { uses_health = 3; }
 
 void Character::Attack(Character* rival)
 {
@@ -31,7 +31,18 @@ void Character::Death()
 
 void Character::Heal()
 {
-	printf("\n\nYou Heal\n\n");
+	int hp_healed = maxhp / 3;
 
+	if (hp + hp_healed > maxhp)
+		hp = maxhp;
+	else
+		hp += hp_healed;
+
+	--uses_health;
+
+	combat->RewriteInCombat();
+
+	printf("\n\nYou use one heal charge\n");
+	printf("You healed %i of hp!\n", hp_healed);
 
 }
