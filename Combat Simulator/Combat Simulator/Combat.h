@@ -22,6 +22,9 @@ public:
 	bool in_combat = true;
 	Character* character1 = nullptr;
 	Character* character2 = nullptr;
+
+	int attack_modifier = 0;
+	int defense_modifier = 0;
 };
 #endif //__MODULECOMBAT_H__
 

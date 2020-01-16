@@ -23,7 +23,25 @@ void main()
 		}
 		else if (option == 2)
 		{
-			printf("Something");
+			printf("Select your stat to improve: (1: attack, 2: defense)");
+			int stat_option = 0;
+			int increased_number = 0;
+			scanf_s("%i", &stat_option);
+			switch (stat_option)
+			{
+			case 1:
+				printf("Select how much the stat will increase: ");
+
+				scanf_s("%i", &increased_number);
+				combat_system->attack_modifier += increased_number;
+				break;
+			case 2: 
+				printf("Select how much the stat will increase: ");
+				scanf_s("%i", &increased_number);
+				combat_system->defense_modifier += increased_number;
+			default:
+				break;
+			}
 			system("pause");
 		}
 	}

@@ -5,7 +5,6 @@
 void ModuleCombat::StartCombat()
 {
 	system("cls");
-	character2 = new Character(8, 350, 110, 45, 90, this);
 
 	printf("Introduce your lvl: ");
 	int player_lvl = 1;
@@ -41,8 +40,8 @@ void ModuleCombat::PlayerStatsByLvl(int lvl)
 	int hp_final, at_final, def_final, sp_final;
 
 	hp_final = hp_base * lvl;
-	at_final = at_base * lvl;
-	def_final = def_base * lvl;
+	at_final = at_base * lvl + attack_modifier;
+	def_final = def_base * lvl + defense_modifier;
 	sp_final = sp_base * lvl;
 
 	character1 = new Character(lvl, hp_final, at_final, def_final, sp_final, this);
