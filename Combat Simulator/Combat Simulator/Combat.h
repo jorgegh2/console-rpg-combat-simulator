@@ -8,6 +8,8 @@ class ModuleCombat
 public:
 	ModuleCombat() {};
 	void StartCombat();
+	void EnemyStatsByLvl(int lvl);
+	void PlayerStatsByLvl(int lvl);
 	void PrintStats();
 	void InCombat();
 	void EnemyTurn();

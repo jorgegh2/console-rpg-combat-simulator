@@ -14,7 +14,7 @@ void main()
 		system("cls");
 
 		int option = 0;
-		printf("Options:\n    1. Combat.\n    2. Actions.\n\n Selecte the option: ");
+		printf("Options:\n    1. Combat.\n    2. Increase 1 stat.\n\n Selecte the option: ");
 		scanf_s("%i", &option);
 
 		if (option == 1)

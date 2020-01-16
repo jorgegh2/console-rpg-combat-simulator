@@ -5,10 +5,47 @@
 void ModuleCombat::StartCombat()
 {
 	system("cls");
-	character1 = new Character(6, 150, 80, 30, 70, this);
 	character2 = new Character(8, 350, 110, 45, 90, this);
 
+	printf("Introduce your lvl: ");
+	int player_lvl = 1;
+	scanf_s("%i", &player_lvl);
+	PlayerStatsByLvl(player_lvl);
+
+
+	printf("\n\nIntroduce enemy lvl: ");
+	int enemy_lvl = 1;
+	scanf_s("%i", &enemy_lvl);
+	EnemyStatsByLvl(enemy_lvl);
+
+
 	in_combat = true;
+}
+
+void ModuleCombat::EnemyStatsByLvl(int lvl)
+{
+	int hp_base = 20, at_base = 10, def_base = 4, sp_base = 10;
+	int hp_final, at_final, def_final, sp_final;
+
+	hp_final = hp_base * lvl;
+	at_final = at_base * lvl;
+	def_final = def_base * lvl;
+	sp_final = sp_base * lvl;
+
+	character2 = new Character(lvl, hp_final, at_final, def_final, sp_final, this);
+}
+
+void ModuleCombat::PlayerStatsByLvl(int lvl)
+{
+	int hp_base = 25, at_base = 13, def_base = 5, sp_base = 12;
+	int hp_final, at_final, def_final, sp_final;
+
+	hp_final = hp_base * lvl;
+	at_final = at_base * lvl;
+	def_final = def_base * lvl;
+	sp_final = sp_base * lvl;
+
+	character1 = new Character(lvl, hp_final, at_final, def_final, sp_final, this);
 }
 
 void ModuleCombat::EndCombat()
@@ -61,7 +98,7 @@ void ModuleCombat::EnemyTurn()
 	if (character2->hp > 0)
 	{
 		int enemy_action = rand() % 2;//TODO 3 debe de ser.
-		if (character2->hp == character2->maxhp)
+		if (character2->hp == character2->maxhp || character2->uses_health <= 0)
 			enemy_action = 0;
 		switch (enemy_action)
 		{
