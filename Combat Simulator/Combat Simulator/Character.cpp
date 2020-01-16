@@ -25,7 +25,10 @@ void Character::Attack(Character* rival)
 }
 void Character::Death()
 {
-	printf("DEAAAD!");
+	if (this == combat->character1)
+		printf("\nThe enemy has defeated you!!\n");
+	else
+		printf("You have defeated the enemy!!\n");
 	combat->in_combat = false;
 }
 
@@ -42,7 +45,12 @@ void Character::Heal()
 
 	combat->RewriteInCombat();
 
-	printf("\n\nYou use one heal charge\n");
-	printf("You healed %i of hp!\n", hp_healed);
+	if (this == combat->character1)
+	{
+		printf("\n\nYou use one heal charge\n");
+		printf("You healed %i of hp!\n", hp_healed);
+	}
+	else
+		printf("\n\nEnemy heals himself!\nThe enemy has healed %i of hp!\n", hp_healed);
 
 }

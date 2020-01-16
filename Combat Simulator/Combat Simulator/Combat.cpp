@@ -60,21 +60,18 @@ void ModuleCombat::EnemyTurn()
 {
 	if (character2->hp > 0)
 	{
-		int enemy_action = rand() % 3;//TODO 3 debe de ser.
-
+		int enemy_action = rand() % 2;//TODO 3 debe de ser.
+		if (character2->hp == character2->maxhp)
+			enemy_action = 0;
 		switch (enemy_action)
 		{
 		case 0:
-			printf("\nEnemy Attack!\n");
+			printf("\nEnemy attacks you!\n");
 			character2->Attack(character1);
 			break;
 		case 1:
-			printf("\nEnemy Defense!\n");
-			break;
-		case 2:
-			printf("\nEnemy Dodge!\n");
-			break;
-		default:
+			printf("\nEnemy heals himself!\n");
+			character2->Heal();
 			break;
 		}
 	}
@@ -88,7 +85,7 @@ void ModuleCombat::PlayerTurn()
 		bool action_valid = false;
 		while (!action_valid)
 		{
-			printf("\n\n\nActions:");
+			printf("\n\nActions:");
 			printf("\n    1. Attack.\n    2. Heal(%i).\n\nSelect your action: ", character1->uses_health);
 			scanf_s("%i", &action);
 		
